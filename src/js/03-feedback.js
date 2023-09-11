@@ -8,7 +8,7 @@ formReg.addEventListener('input', throttle(handleInput, 500));
 formReg.addEventListener('submit', handleSubmit);
 
 const data = JSON.parse(localStorage.getItem('feedback-form-state'));
-const feedbackFormState = data || {};
+let feedbackFormState = data || {};
 
 fillForm();
 
@@ -27,7 +27,8 @@ function fillForm() {
     message.value = data.message || '';
   }
 }
-function handleSubmit() {
+function handleSubmit(event) {
+  event.preventDefault();
   console.log(feedbackFormState);
   localStorage.removeItem('feedback-form-state');
   feedbackFormState = {};
