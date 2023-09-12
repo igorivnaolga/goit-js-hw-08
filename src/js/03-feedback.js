@@ -29,7 +29,11 @@ function fillForm() {
 }
 function handleSubmit(event) {
   event.preventDefault();
+  if (email.value === '' || message.value === '') {
+    return alert('All fields should be completed');
+  }
   console.log(feedbackFormState);
   localStorage.removeItem('feedback-form-state');
+  formReg.reset();
   feedbackFormState = {};
 }
